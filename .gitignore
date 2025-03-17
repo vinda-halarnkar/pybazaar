@@ -1,0 +1,41 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Dependency management
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Environment variables
+.env
+*.env
+
+# Flask instance and cache files
+instance/
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Compiled and cache files
+*.swp
+.cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
