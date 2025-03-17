@@ -3,7 +3,6 @@ from app import create_app
 from app.models.user import User
 from config import Config
 from app.db import db  # Import db instance
-import pillow
 
 load_dotenv()
 
