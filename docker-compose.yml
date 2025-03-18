@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  django:
+    build: .
+    container_name: django_app
+    #    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1  # Disables output buffering
+    env_file:
+      - .env
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8005:8000"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+    networks:
+      - pybazaar_app
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    #    restart: always
+    env_file:
+      - .env
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - pybazaar_app
+
+  webpack:
+    container_name: webpack_app
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: [ "npx", "webpack", "--config", "webpack.config.js", "--watch" ]
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - django
+    build:
+      context: .
+      dockerfile: Dockerfile.webpack
+    networks:
+      - pybazaar_app
+    ports:
+      - "8082:8080"
+
+volumes:
+  mysql_data:
+
+networks:
+  pybazaar_app:
+    driver: bridge
