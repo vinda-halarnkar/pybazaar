@@ -1,0 +1,13 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PyBazaar</title>
+    {% render_bundle 'main' %} <!-- Load main Webpack bundle here -->
+</head>
+<body>
+    <h1>Welcome to PyBazaar</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>
