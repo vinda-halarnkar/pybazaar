@@ -28,7 +28,7 @@ This command will build the necessary Docker images and start the containers in 
 
 ### 4. Run Migrations & Collect Static Files
 ```bash
-docker-compose exec web poetry run python manage.py migrate
+docker-compose exec django poetry run python manage.py migrate
 ```
 
 [//]: # (### 5. Create a Superuser)
@@ -49,7 +49,7 @@ docker-compose exec web poetry run python manage.py migrate
 ## Running Commands inside the Docker Container
 To run any Django command inside the container, use:
 ```bash
-docker-compose exec web poetry run python manage.py <command>
+docker-compose exec django poetry run python manage.py <command>
 ```
 
 ## Stopping and Restarting the Containers
