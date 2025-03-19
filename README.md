@@ -80,3 +80,11 @@ To remove all containers, volumes, and images:
 docker-compose down -v
 ```
 
+## Django Admin
+
+The Django admin interface can be accessed at: `http://localhost:8005/admin`
+
+To create a new user for admin, use command
+```bash
+docker-compose exec django poetry run python manage.py createsuperuser
+```
