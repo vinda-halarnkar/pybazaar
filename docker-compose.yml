@@ -4,7 +4,7 @@ services:
   django:
     build: .
     container_name: django_app
-    #    restart: always
+    restart: always
     environment:
       - PYTHONUNBUFFERED=1  # Disables output buffering
     env_file:
@@ -22,7 +22,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql_db
-    #    restart: always
+    restart: always
     env_file:
       - .env
     ports:
