@@ -21,3 +21,25 @@ pre-commit = "^4.2.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+target-version = ["py310"]
+line-length = 88
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.docker
+  | \.idea
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
