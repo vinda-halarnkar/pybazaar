@@ -31,9 +31,15 @@ DEBUG = os.getenv("DJANGO_DEBUG")
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'auth/login/'
+
+#Auth model
+AUTH_USER_MODEL = "authentication.UserProfile"
+
 # Application definition
 
 INSTALLED_APPS = [
+    'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
-    'authentication'
 ]
 
 MIDDLEWARE = [
