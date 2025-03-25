@@ -10,13 +10,13 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=150)
     last_name = forms.CharField(max_length=150)
     email = forms.EmailField(validators=[validators.EmailValidator])
-    username = forms.CharField(max_length=150)
+    # username = forms.CharField(max_length=150)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Password")
     password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
     class Meta:
         model = UserProfile
-        fields = ["first_name", "last_name", "username", "email", "password1", "password2" ]
+        fields = ["first_name", "last_name", "email", "password1", "password2" ]
 
     def clean_email(self):
         """
