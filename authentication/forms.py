@@ -37,5 +37,5 @@ class RegisterForm(UserCreationForm):
         return email
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(required=True, validators=[validators.EmailValidator])
-    password = forms.CharField(required=True, widget=forms.PasswordInput)
+    email = forms.EmailField(validators=[validators.EmailValidator])
+    password = forms.CharField(widget=forms.PasswordInput)
