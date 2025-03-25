@@ -7,10 +7,10 @@ from authentication.models import UserProfile
 
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=150, required=True)
-    last_name = forms.CharField(max_length=150, required=True)
-    email = forms.EmailField(required=True, validators=[validators.EmailValidator])
-    username = forms.CharField(max_length=150, required=True)
+    first_name = forms.CharField(max_length=150)
+    last_name = forms.CharField(max_length=150)
+    email = forms.EmailField(validators=[validators.EmailValidator])
+    username = forms.CharField(max_length=150)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Password")
     password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
@@ -37,5 +37,5 @@ class RegisterForm(UserCreationForm):
         return email
 
 class LoginForm(forms.Form):
-    email = forms.CharField(required=True, validators=[validators.EmailValidator])
+    email = forms.EmailField(required=True, validators=[validators.EmailValidator])
     password = forms.CharField(required=True, widget=forms.PasswordInput)
