@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import requires_csrf_token
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm, LoginForm
@@ -7,6 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+@requires_csrf_token
 def register_view(request):
     """
     Handles user registration.
@@ -21,13 +23,17 @@ def register_view(request):
     """
     if request.method == "POST":
         form = RegisterForm(request.POST)
+        # TODO: CHeck which scenarios form.is_valid is used
         if form.is_valid():
             form.save()
-            return redirect("login")  # Redirect to login page
+            return redirect("login")
+        else:
+            messages.error(request, "There were errors in the form. Please correct them.")
     else:
         form = RegisterForm()
     return render(request, "register.html", {"form": form})
 
+@requires_csrf_token
 def login_view(request):
     """
     Handles user login.
@@ -41,19 +47,18 @@ def login_view(request):
     """
     if request.method == "POST":
         form = LoginForm(request.POST)
+        #TODO: CHeck which scenarios form.is_valid is used
         if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
-                logger.info(f"Successful login for user: {email}")
                 return redirect("index")
             else:
-                messages.error(request, "Invalid email or password")
-                logger.warning(f"Failed login attempt for email: {email}")
+                messages.error(request, "Invalid email or password. Please check your credentials and try again.")
         else:
-            logger.error("Invalid login form submission")
+            messages.error(request, "There were errors in the form. Please correct them.")
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})

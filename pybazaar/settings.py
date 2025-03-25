@@ -31,7 +31,7 @@ DEBUG = os.getenv("DJANGO_DEBUG")
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = 'auth/login/'
+LOGIN_URL = 'login/'
 
 #Auth model
 AUTH_USER_MODEL = "authentication.UserProfile"
