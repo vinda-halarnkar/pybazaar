@@ -16,7 +16,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = UserProfile
-        fields = ["first_name", "last_name", "email", "password1", "password2" ]
+        fields = ["first_name", "last_name", "email", "password1", "password2"]
 
     def clean_email(self):
         """
@@ -35,6 +35,7 @@ class RegisterForm(UserCreationForm):
         if UserProfile.objects.filter(email=email).exists():
             raise ValidationError("This email is already registered. Please use a different email.")
         return email
+
 
 class LoginForm(forms.Form):
     email = forms.EmailField(validators=[validators.EmailValidator])

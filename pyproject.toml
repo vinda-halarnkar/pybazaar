@@ -15,8 +15,31 @@ python-dotenv = "^1.0.1"
 mysqlclient = "^2.2.0"
 black = "^25.1.0"
 flake8 = "^7.1.2"
+pre-commit = "^4.2.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+target-version = ["py310"]
+line-length = 100
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.docker
+  | \.idea
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
