@@ -12,6 +12,13 @@ TOTAL_PRODUCTS = 200
 
 
 class Command(BaseCommand):
+    """
+    Import products from the DummyJSON API.
+
+    This command imports products from the DummyJSON API in batches.
+    The total number of products imported is determined by the TOTAL_PRODUCTS constant.
+    """
+
     def add_arguments(self, parser):
         parser.add_argument(
             "limit",
@@ -71,7 +78,7 @@ class Command(BaseCommand):
                         "image_path": product["thumbnail"],
                         "is_thumbnail": True
                     }]
-                    if product["images"]:
+                    if "images" in product:
                         for image_path in product["images"]:
                             product_images.append({
                                 "image_path": image_path,
@@ -124,15 +131,15 @@ class Command(BaseCommand):
 
     def import_brands(self, brands):
         try:
-            with transaction.atomic():
-                existing_brands = set(Brand.objects.filter(brand_name__in=brands).values_list('brand_name', flat=True))
-                new_brands = [Brand(brand_name=brand) for brand in brands if brand not in existing_brands]
+            existing_brands = set(Brand.objects.filter(brand_name__in=brands).values_list('brand_name', flat=True))
+            new_brands = [Brand(brand_name=brand) for brand in brands if brand not in existing_brands]
 
-                if new_brands:
+            if new_brands:
+                with transaction.atomic():
                     Brand.objects.bulk_create(new_brands)
-                    self.log_success('Successfully imported brands')
-                else:
-                    self.log_success('No new brands to import')
+                self.log_success('Successfully imported brands')
+            else:
+                self.log_success('No new brands to import')
 
         except DatabaseError as e:
             self.log_error(f'Database error in importing brands: {e}')
@@ -141,21 +148,21 @@ class Command(BaseCommand):
 
     def import_availability_statuses(self, statuses):
         try:
-            with transaction.atomic():
-                existing_statuses = AvailabilityStatus.objects.filter(status_name__in=statuses).values_list(
-                    'status_name', flat=True)
+            existing_statuses = AvailabilityStatus.objects.filter(status_name__in=statuses).values_list(
+                'status_name', flat=True)
 
-                new_statuses = [
-                    AvailabilityStatus(status_name=status_name)
-                    for status_name in statuses
-                    if status_name not in existing_statuses
-                ]
+            new_statuses = [
+                AvailabilityStatus(status_name=status_name)
+                for status_name in statuses
+                if status_name not in existing_statuses
+            ]
 
-                if new_statuses:
+            if new_statuses:
+                with transaction.atomic():
                     AvailabilityStatus.objects.bulk_create(new_statuses)
-                    self.log_success('Successfully imported availability statuses.')
-                else:
-                    self.log_success('No new availability statuses to import.')
+                self.log_success('Successfully imported availability statuses.')
+            else:
+                self.log_success('No new availability statuses to import.')
         except DatabaseError as e:
             self.log_error(f'Database error in importing availability statuses: {e}')
         except Exception as e:
