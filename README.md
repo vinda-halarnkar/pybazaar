@@ -40,17 +40,7 @@ This command will build the necessary Docker images and start the containers in 
 docker-compose exec django poetry run python manage.py migrate
 ```
 
-[//]: # (### 5. Create a Superuser)
-
-[//]: # (```bash)
-
-[//]: # (docker-compose exec web poetry run python manage.py createsuperuser)
-
-[//]: # (```)
-
-[//]: # (Follow the prompts to create an admin user.)
-
-### 6. Access the Application
+### 5. Access the Application
 
 - The app will be running at: `http://localhost:8005`
 
@@ -135,3 +125,18 @@ poetry run pre-commit run --all-files
 Pre-commit hooks will run on `git commit`
 
 Add `# noqa: E501` to ignore line length errors on lines where you cannot change string length.
+
+## Import Products from External API
+
+To import products from an external API, use the following command:
+
+```bash
+docker-compose exec django poetry run python manage.py importproducts {limit}
+```
+
+Replace `{limit}` with the desired number of products to import per batch.
+Example:
+
+```bash
+docker-compose exec django poetry run python manage.py importproducts 25
+```
