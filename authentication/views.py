@@ -8,6 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 @requires_csrf_token
 def register_view(request):
     """
@@ -18,7 +19,8 @@ def register_view(request):
 
     Returns:
     HttpResponse: A redirect response to the login page if registration is successful,
-                  or renders the registration page with the registration form if the request method is GET
+                  or renders the registration page with the registration form
+                   if the request method is GET
                   or if the form submission is invalid.
     """
     if request.method == "POST":
@@ -32,6 +34,7 @@ def register_view(request):
     else:
         form = RegisterForm()
     return render(request, "register.html", {"form": form})
+
 
 @requires_csrf_token
 def login_view(request):
@@ -47,7 +50,7 @@ def login_view(request):
     """
     if request.method == "POST":
         form = LoginForm(request.POST)
-        #TODO: CHeck which scenarios form.is_valid is used
+        # TODO: CHeck which scenarios form.is_valid is used
         if form.is_valid():
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
@@ -56,18 +59,22 @@ def login_view(request):
                 login(request, user)
                 return redirect("index")
             else:
-                messages.error(request, "Invalid email or password. Please check your credentials and try again.")
+                messages.error(
+                    request,
+                    "Invalid email or password. Please check your credentials and try again.",
+                )
         else:
             messages.error(request, "There were errors in the form. Please correct them.")
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
 
+
 @login_required
 def logout_view(request):
     """
     Logs out the authenticated user and redirects to the login page.
-    
+
     Parameters:
     request (HttpRequest): The HTTP request object containing metadata about the request.
 

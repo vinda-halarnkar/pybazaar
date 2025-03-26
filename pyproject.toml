@@ -25,7 +25,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 target-version = ["py310"]
-line-length = 88
+line-length = 100
 include = '\.pyi?$'
 extend-exclude = '''
 /(
