@@ -1,0 +1,11 @@
+<form method="post" name="login-form" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+{% if messages %}
+    {% for message in messages %}
+        <p class="error">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<a href="{% url 'register' %}">Don't have an account? Register</a>

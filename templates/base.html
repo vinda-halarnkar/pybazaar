@@ -1,12 +1,35 @@
 {% load render_bundle from webpack_loader %}
+
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>PyBazaar</title>
     {% render_bundle 'main' %} <!-- Load main Webpack bundle here -->
+    <style>
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .logout-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </head>
 <body>
+    <button class="logout-button" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+
     <h1>Welcome to PyBazaar</h1>
     {% block content %}{% endblock %}
 </body>
