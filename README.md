@@ -86,7 +86,6 @@ docker-compose logs -f <container-name>
 
 [//]: # (docker-compose exec web poetry run pytest)
 
-
 ## Cleanup
 
 To remove all containers, volumes, and images:
@@ -134,3 +133,5 @@ poetry run pre-commit run --all-files
 ```
 
 Pre-commit hooks will run on `git commit`
+
+Add `# noqa: E501` to ignore line length errors on lines where you cannot change string length.
