@@ -72,7 +72,6 @@ docker-compose logs -f <container-name>
 
 [//]: # (docker-compose exec web poetry run pytest)
 
-[//]: # (```)
 
 ## Cleanup
 To remove all containers, volumes, and images:
