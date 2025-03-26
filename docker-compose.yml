@@ -13,7 +13,8 @@ services:
     ports:
       - "8005:8000"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     volumes:
       - .:/app
     networks:
@@ -31,6 +32,11 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - pybazaar_app
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -u$$MYSQL_USER --password=$$MYSQL_ROOT_PASSWORD" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   webpack:
     container_name: webpack_app
