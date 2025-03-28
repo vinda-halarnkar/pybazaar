@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleTracker = require('webpack-bundle-tracker')
+const webpack = require("webpack");
 
 const fs = require("fs")
 
@@ -25,6 +26,11 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({filename: 'main.css',}),
         new BundleTracker({path: __dirname, filename: 'webpack-stats.json'}),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+        }),
     ],
     resolve: {
         extensions: [".scss", ".css", ".js"],
