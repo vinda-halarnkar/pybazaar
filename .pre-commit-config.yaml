@@ -17,3 +17,4 @@ repos:
     rev: 7.1.2
     hooks:
       - id: flake8
+exclude: "(^|/)migrations/.*"
