@@ -30,14 +30,17 @@ class Brand(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='products')
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, related_name="products"
+    )
     price = models.FloatField()
     discount_percentage = models.FloatField()
     stock = models.IntegerField()
-    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, related_name='products')
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, related_name="products")
     sku = models.CharField(max_length=20, unique=True)
-    availability_status = models.ForeignKey(AvailabilityStatus, on_delete=models.SET_NULL, null=True,
-                                            related_name='products')
+    availability_status = models.ForeignKey(
+        AvailabilityStatus, on_delete=models.SET_NULL, null=True, related_name="products"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -46,7 +49,7 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
     image_path = models.CharField(max_length=255, null=False)
     is_thumbnail = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
