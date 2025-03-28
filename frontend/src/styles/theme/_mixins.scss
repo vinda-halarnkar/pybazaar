@@ -47,7 +47,7 @@
 
 //  fliter mixin
 
-@mixin filter($filter-type,$filter-amount) { 
+@mixin filter($filter-type,$filter-amount) {
   -webkit-filter: $filter-type+string.unquote('(#{$filter-amount})');
   -moz-filter: $filter-type+string.unquote('(#{$filter-amount})');
   -ms-filter: $filter-type+string.unquote('(#{$filter-amount})');
