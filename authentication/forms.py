@@ -57,5 +57,5 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.EmailField(label="Email", validators=[validators.EmailValidator])
+    email = forms.EmailField(label="Email", validators=[validators.EmailValidator])
     password = forms.CharField(widget=forms.PasswordInput)
