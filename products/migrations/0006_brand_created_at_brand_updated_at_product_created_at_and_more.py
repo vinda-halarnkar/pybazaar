@@ -14,9 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="brand",
             name="created_at",
-            field=models.DateTimeField(
-                auto_now_add=True
-            ),
+            field=models.DateTimeField(auto_now_add=True),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -27,9 +25,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="product",
             name="created_at",
-            field=models.DateTimeField(
-                auto_now_add=True 
-            ),
+            field=models.DateTimeField(auto_now_add=True),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -40,9 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="productimage",
             name="created_at",
-            field=models.DateTimeField(
-                auto_now_add=True 
-            ),
+            field=models.DateTimeField(auto_now_add=True),
             preserve_default=False,
         ),
         migrations.AddField(
