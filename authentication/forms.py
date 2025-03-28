@@ -36,6 +36,19 @@ class RegisterForm(UserCreationForm):
         return email
 
     def save(self, commit=True):
+        """
+        Saves the user instance.
+
+        This method overrides the default `save` method of `UserCreationForm`
+        to set the username to the email address of the user.
+
+        Args:
+            commit (bool): If `True`, the user instance will be saved to
+            the database. Defaults to `True`.
+
+        Returns:
+            UserProfile: The saved user instance.
+        """
         user = super().save(commit=False)
         user.username = user.email
         if commit:
