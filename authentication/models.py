@@ -3,20 +3,18 @@ from django.db import models
 
 
 class UserProfile(AbstractUser):
-    email = models.EmailField(unique=True)  # Ensure email is unique
-    username = models.CharField(
-        max_length=150, unique=True, blank=True, null=True
-    )  # Allow blank username
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=150, unique=True, null=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]  # Remove username from required fields
+    REQUIRED_FIELDS = ["username"]
 
     def save(self, *args, **kwargs):
         """
         Override the default save method to ensure that the username is set to the
-        email address if it is not provided.
+        email address since it's not provided.
 
-        This is useful for users who sign up using their email address and do not
+        This is done for users who sign up using their email address and do not
         provide a username.
         """
         if not self.username:
