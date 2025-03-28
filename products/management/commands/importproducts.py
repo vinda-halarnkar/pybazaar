@@ -213,7 +213,8 @@ class Command(BaseCommand):
                             )
                             ProductImage.objects.bulk_create(product_images_instances)
                             self.log_success(
-                                f'Successfully imported product images for product SKU: "{created_product.sku}".'
+                                f"Successfully imported product images for product SKU:"
+                                f' "{created_product.sku}".'
                             )
                 else:
                     self.log_success("No new products to import.")

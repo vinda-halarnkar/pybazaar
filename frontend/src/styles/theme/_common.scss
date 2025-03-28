@@ -73,7 +73,7 @@
 		background: #f9fafc;
 		.title {
 			h6 {
-			
+
 			}
 			span {
 				color: #cccccc;
@@ -187,7 +187,7 @@
 		background: #f9fafc;
 		.title {
 			h6 {
-			
+
 			}
 			span {
 				color: #cccccc;
@@ -1140,10 +1140,10 @@
 .filter-bar {
 	padding: 0px 20px 10px 20px;
 	background: variables.$primary-color3;
-		
+
 	a,i{
 		color:variables.$black;
-	}	
+	}
 }
 
 .main-categories{
@@ -1202,11 +1202,11 @@
 		background: variables.$white;
 		&.active {
 			@extend .gradient-bg;
-			color: variables.$white;	
+			color: variables.$white;
 		}
 		&:hover {
 			@extend .gradient-bg;
-			color: variables.$white;	
+			color: variables.$white;
 		}
 	}
 	.dot-dot {
@@ -1612,15 +1612,3 @@
 }
 
 //--------- End Price Range Area noUiSlider ----------//
-
-
-
-
-
-
-
-
-
-
-
-
