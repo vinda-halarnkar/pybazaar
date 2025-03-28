@@ -37,6 +37,10 @@ LOGIN_URL = "login/"
 # Auth model
 AUTH_USER_MODEL = "authentication.UserProfile"
 
+AUTHENTICATION_BACKENDS = [
+    "authentication.backends.EmailBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 # Application definition
 
 INSTALLED_APPS = [
