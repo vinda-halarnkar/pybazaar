@@ -10,7 +10,6 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=150)
     last_name = forms.CharField(max_length=150)
     email = forms.EmailField(validators=[validators.EmailValidator])
-    # username = forms.CharField(max_length=150)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Password")
     password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
@@ -36,7 +35,14 @@ class RegisterForm(UserCreationForm):
             raise ValidationError("This email is already registered. Please use a different email.")
         return email
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = user.email
+        if commit:
+            user.save()
+        return user
+
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(validators=[validators.EmailValidator])
+    username = forms.EmailField(label="Email")
     password = forms.CharField(widget=forms.PasswordInput)

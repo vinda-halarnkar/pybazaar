@@ -50,10 +50,11 @@ def login_view(request):
     """
     if request.method == "POST":
         form = LoginForm(request.POST)
-        # TODO: CHeck which scenarios form.is_valid is used
         if form.is_valid():
-            email = form.cleaned_data.get("email")
+            email = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
+
+            print(email, password)
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
