@@ -59,7 +59,7 @@ jQuery(function() {
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
-        navText:["<img src='img/banner/prev.png'>","<img src='img/banner/next.png'>"],
+        navText:["<img src='static/images/banner/prev.png'>","<img src='static/images/banner/next.png'>"],
         dots:false
     });
 

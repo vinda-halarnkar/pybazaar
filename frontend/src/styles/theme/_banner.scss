@@ -5,7 +5,7 @@
 /* banner area css
 ============================================================================================ */
 .banner-area {
-	background: url(../img/banner/banner-bg.jpg) center no-repeat;
+	background: url(/static/images/banner/banner-bg.jpg) center no-repeat;
 	background-size: cover;
 	position: relative;
 	.fullscreen {
@@ -92,7 +92,7 @@
 //------- Start Bread Crumb --------//
 
 .organic-breadcrumb {
-	background: url(../img/banner/common-banner.jpg) center no-repeat;
+	background: url(/static/images/banner/common-banner.jpg) center no-repeat;
 	background-size: cover;
 	padding-top: 130px;
 	@media (max-width: 991px) {

@@ -1,11 +1,11 @@
+// Vendor styles
+@use "theme/vendors";
+
 // including variables and mixins
 @use "theme/variables";
 @use "theme/mixins";
 @use "theme/predefine";
 @use "theme/reset";
-
-// Vendor styles
-@use "theme/vendors";
 
 // Custom Scss
 @use "theme/elements";

@@ -1,9 +1,9 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BundleTracker = require('webpack-bundle-tracker')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleTracker = require('webpack-bundle-tracker');
 const webpack = require("webpack");
-
-const fs = require("fs")
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const fs = require("fs");
 
 // Define log file path
 const logFilePath = path.resolve("sass-warnings.log")
@@ -31,6 +31,11 @@ module.exports = {
             jQuery: "jquery",
             "window.jQuery": "jquery",
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'frontend/src/img', to: path.resolve(__dirname, 'static/images'), noErrorOnMissing: true },
+            ],
+        }),
     ],
     resolve: {
         extensions: [".scss", ".css", ".js"],
@@ -56,7 +61,17 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            url: {
+                                filter: (url, resourcePath) => {
+                                    let condition = !url.includes("static/images");
+                                    return condition;
+                                }
+                            }
+                        }
+                    },
                     {
                         loader: "sass-loader",
                         options: {
@@ -65,13 +80,11 @@ module.exports = {
                                 logger: {
                                     warn: (message, options) => {
                                         if (options.deprecation) {
-//                                            console.warn(message); // Show in console
-                                            logWarning(message + "\n" + options.deprecationType.description + "\n" + options.stack); // Write to file
+                                            logWarning(message + "\n" + options.deprecationType.description + "\n" + options.stack);
                                         }
                                     },
                                     error: (message, options) => {
-//                                        console.error(message); // Show in console
-                                        logError(message + "\n" + options.stack); // Write to file
+                                        logError(message + "\n" + options.stack);
                                     },
                                 },
                             },
@@ -80,19 +93,23 @@ module.exports = {
                 ],
             },
             {
+                // Process only images from node_modules (ignore theme images)
                 test: /\.(png|jpg|jpeg|gif|svg)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'images/[name][ext]'
-                }
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                type: 'asset/resource',
-                generator: {
-                  filename: 'fonts/[name][ext]',
+                    filename: '../images/[name][ext]'
                 },
+                issuer: [/node_modules/],
             },
+            // {
+            //     // Process only fonts from node_modules (ignore theme fonts)
+            //     test: /\.(woff|woff2|eot|ttf|otf)$/,
+            //     type: 'asset/resource',
+            //     generator: {
+            //         filename: '../fonts/[name][ext]',
+            //     },
+            //     issuer: [/node_modules/],
+            // },
         ]
     },
     watchOptions: {

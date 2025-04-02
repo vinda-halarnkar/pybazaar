@@ -173,6 +173,6 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 /node_modules/
-/static/bundles/
+/static/
 /package-lock.json
 /webpack-stats.json

@@ -43,7 +43,5 @@ document.addEventListener("DOMContentLoaded", function () {
   if (clockElement) {
     var deadline = new Date(Date.parse(new Date()) + 30 * 24 * 60 * 60 * 1000);
     initializeClock("clockdiv", deadline);
-  } else {
-    console.error("clockdiv element not found!");
   }
 });

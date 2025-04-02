@@ -497,7 +497,7 @@
 			content: "";
 			height: 1px;
 			width: 500px;
-			background: url(../img/logo.png) repeat;
+			background: url(/static/images/logo.png) repeat;
 			top: 50%;
 			right: 120%;
 			transform: translateY(-50%);
@@ -507,7 +507,7 @@
 			content: "";
 			height: 1px;
 			width: 500px;
-			background: url(../img/logo.png) repeat;
+			background: url(/static/images/logo.png) repeat;
 			top: 50%;
 			left: 120%;
 			transform: translateY(-50%);
@@ -527,7 +527,7 @@
 			content: "";
 			height: 1px;
 			width: 200px;
-			background: url(../img/logo.png) repeat;
+			background: url(/static/images/logo.png) repeat;
 			top: 50%;
 			right: 107%;
 			transform: translateY(-50%);
@@ -537,7 +537,7 @@
 			content: "";
 			height: 1px;
 			width: 2000px;
-			background: url(../img/logo.png) repeat;
+			background: url(/static/images/logo.png) repeat;
 			top: 50%;
 			left: 107%;
 			transform: translateY(-50%);
@@ -606,7 +606,7 @@
 	border-radius: 50%;
 	transform: rotate(-25deg);
 	position: absolute;
-	background: url(../img/logo.png) no-repeat center center/ cover;
+	background: url(/static/images/logo.png) no-repeat center center/ cover;
 	z-index: 5;
 	.offer {
 		margin-top: 7px;
