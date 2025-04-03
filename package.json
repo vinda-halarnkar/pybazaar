@@ -4,7 +4,8 @@
   "description": "PyBazaar",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development --watch"
   },
   "keywords": [],
   "author": "",
@@ -13,13 +14,33 @@
     "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
     "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.23.0",
+    "eslint-webpack-plugin": "^5.0.0",
     "mini-css-extract-plugin": "^2.9.2",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.86.0",
     "sass-loader": "^16.0.5",
+    "sass-migrator": "^2.3.1",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.17.0",
+    "stylelint-config-standard": "^37.0.0",
     "stylelint-webpack-plugin": "^5.0.1",
     "webpack": "^5.98.0",
     "webpack-bundle-tracker": "^3.1.1",
     "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "choices.js": "^11.1.0",
+    "font-awesome": "^4.7.0",
+    "gmaps": "^0.4.25",
+    "ion-rangeslider": "^2.3.1",
+    "jquery": "^3.7.1",
+    "magnific-popup": "^1.2.0",
+    "nouislider": "^15.8.1",
+    "owl.carousel": "^2.3.4"
   }
 }
