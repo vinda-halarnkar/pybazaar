@@ -2,9 +2,9 @@
 @use "bootstrap/scss/bootstrap"; // Imported from node modules
 
 // Icons
-@import "../vendor/themify-icons"; // Imported from frontend/src/styles/vendor/themify-icons.css
-@import "font-awesome/css/font-awesome.min.css"; // Imported from node modules
-@import "../vendor/linearicons"; // Imported from frontend/src/styles/vendor/linearicons.css
+@import "../vendor/themify-icons";
+@import "../vendor/linearicons";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 // // Plugins
 @import "owl.carousel/dist/assets/owl.carousel.css";
