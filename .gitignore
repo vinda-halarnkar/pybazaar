@@ -174,5 +174,5 @@ cython_debug/
 .pypirc
 /node_modules/
 /static/
-/package-lock.json
-/webpack-stats.json
+package-lock.json
+webpack-stats.json

@@ -93,6 +93,7 @@ DATABASES = {
         "NAME": os.getenv("MYSQL_DATABASE"),
         "USER": os.getenv("MYSQL_USER"),
         "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+        # TODO: Do not allow HOST & PORT to be changed
         "HOST": os.getenv("MYSQL_HOST"),  # Use service name in Docker
         "PORT": os.getenv("MYSQL_PORT"),
     }
