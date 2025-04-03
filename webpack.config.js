@@ -18,13 +18,16 @@ function logError(message) {
 }
 
 module.exports = {
-    entry: './frontend/index.js',
+    entry: {
+        main: './frontend/index.js',   // Main entry (includes main.scss)
+        product: './frontend/src/styles/product.scss',  // Product-specific CSS
+    },
     output: {
         path: path.resolve(__dirname, 'static/bundles'),
-        filename: 'main.js'
+        filename: '[name].js'
     },
     plugins: [
-        new MiniCssExtractPlugin({filename: 'main.css',}),
+        new MiniCssExtractPlugin({filename: '[name].css',}),
         new BundleTracker({path: __dirname, filename: 'webpack-stats.json'}),
         new webpack.ProvidePlugin({
             $: "jquery",
