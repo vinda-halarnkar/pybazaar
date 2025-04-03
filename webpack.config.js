@@ -5,10 +5,8 @@ const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const fs = require("fs");
 
-// Define log file path
 const logFilePath = path.resolve("sass-warnings.log")
 
-// Function to append warnings to the log file
 function logWarning(message) {
     fs.appendFileSync(logFilePath, `[${new Date().toISOString()}] WARNING:  ${message}\n`, "utf8");
 }
@@ -104,20 +102,11 @@ module.exports = {
                 },
                 issuer: [/node_modules/],
             },
-            // {
-            //     // Process only fonts from node_modules (ignore theme fonts)
-            //     test: /\.(woff|woff2|eot|ttf|otf)$/,
-            //     type: 'asset/resource',
-            //     generator: {
-            //         filename: '../fonts/[name][ext]',
-            //     },
-            //     issuer: [/node_modules/],
-            // },
         ]
     },
     watchOptions: {
         ignored: /node_modules/, // Ignore unnecessary file changes
-        poll: 1000, // Check for file changes every second (helps in Docker)
+        poll: 1000, // Check for file changes every second
     },
     stats: {
         errorDetails: true,
