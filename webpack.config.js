@@ -36,7 +36,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'frontend/src/img', to: path.resolve(__dirname, 'static/images'), noErrorOnMissing: true },
+                { from: 'frontend/src/images', to: path.resolve(__dirname, 'static/images'), noErrorOnMissing: true },
             ],
         }),
     ],

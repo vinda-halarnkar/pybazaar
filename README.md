@@ -140,3 +140,13 @@ Example:
 ```bash
 docker-compose exec django poetry run python manage.py importproducts 25
 ```
+
+## Troubleshooting
+
+### Webpack errors
+
+1. For 'MODULE_NOT_FOUND' errors, run to update node modules
+
+```bash
+docker-compose run --rm webpack npm install
+```
