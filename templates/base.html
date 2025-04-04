@@ -1,36 +1,29 @@
 {% load render_bundle from webpack_loader %}
 
-{% load render_bundle from webpack_loader %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PyBazaar</title>
-    {% render_bundle 'main' %} <!-- Load main Webpack bundle here -->
-    <style>
-        .logout-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .logout-button:hover {
-            background-color: #cc0000;
-        }
-    </style>
+    <title>{% block title %}{% endblock %}</title>
+    {% render_bundle 'main' %}
 </head>
 <body>
-    <button class="logout-button" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+    {% include 'base/header.html'%}
 
-    <h1>Welcome to PyBazaar</h1>
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+            <h1>{% block banner_title %}{% endblock %}</h1>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
     {% block content %}{% endblock %}
+
+    {% include 'base/footer.html'%}
 </body>
 </html>

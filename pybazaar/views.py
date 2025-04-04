@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 @login_required
@@ -13,4 +12,4 @@ def home(request):
 
 
 def contact(request):
-    return HttpResponse("This is contact page")
+    return render(request, "contact.html")
