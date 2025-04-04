@@ -51,6 +51,18 @@
 		}
 	}
 }
+.cart-badge:after{
+	content:attr(value);
+	font-size:10px;
+	color: variables.$white;
+	background: variables.$primary-color2;
+	border-radius:50%;
+	padding: 1px 5px;
+	position:relative;
+	left:-8px;
+	top:-10px;
+	opacity:0.9;
+}
 .mini-cart-2a {
 	width: 290px;
 	background: #fff;
