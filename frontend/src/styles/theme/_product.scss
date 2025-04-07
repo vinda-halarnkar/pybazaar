@@ -1629,7 +1629,6 @@
 	box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.07);
 	height: 100%;
 	text-align: center;
-	padding-top: 115px;
 	h3{
 		color: variables.$title-color;
 		text-transform: uppercase;
@@ -1638,7 +1637,7 @@
 	}
 	.login_form{
 		max-width: 385px;
-		margin: auto;
+		margin: 0 auto;
 		.form-group{
 
 		}
