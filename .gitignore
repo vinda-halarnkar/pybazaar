@@ -176,3 +176,4 @@ cython_debug/
 /static/
 package-lock.json
 webpack-stats.json
+*.code-workspace
