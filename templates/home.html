@@ -63,7 +63,9 @@
                             <div class="single-deal">
                                 <div class="overlay"></div>
                                 <img alt="" class="img-fluid w-100" src="{% if forloop.counter|divisibleby:2 %}{% static 'images/category/c2.jpg' %}{% else %}{% static 'images/category/c1.jpg' %}{% endif %}">
-
+                                <div class="deal-details">
+                                    <h6 class="deal-title">{{ category.category_name  }}</h6>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -73,6 +75,9 @@
                 <div class="single-deal">
                     <div class="overlay"></div>
                     <img alt="" class="img-fluid w-100" src="{% static 'images/category/c5.jpg' %}">
+                    <div class="deal-details">
+                        <h6 class="deal-title">{{ category.category_name  }}</h6>
+                    </div>
                 </div>
             </div>
         </div>
