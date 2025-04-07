@@ -59,7 +59,6 @@ jQuery(function() {
         autoplayTimeout: 1000,
         loop:true,
         nav:false,
-        // navText:["<img src='static/images/banner/prev.png'>","<img src='static/images/banner/next.png'>"],
         dots:false
     });
 

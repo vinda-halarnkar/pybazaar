@@ -59,15 +59,11 @@
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     {% for category in categories|slice:":4" %}
-                        <div class="{% if forloop.counter|divisibleby:2 == 0 %} col-lg-4 col-md-4 {% else %} col-lg-8 col-md-8 {% endif %} ">
+                        <div class="{% if forloop.counter|divisibleby:2 == 0 %}  col-lg-8 col-md-8 {% else %} col-lg-4 col-md-4{% endif %} ">
                             <div class="single-deal">
                                 <div class="overlay"></div>
-                                <img alt="" class="img-fluid w-100" src="{% static 'images/category/c1.jpg' %}">
-                                <a class="img-pop-up" href="{% static 'images/category/c1.jpg' %}" target="_blank">
-                                    <div class="deal-details">
-                                        <h6 class="deal-title">{{ category.category_name }}</h6>
-                                    </div>
-                                </a>
+                                <img alt="" class="img-fluid w-100" src="{% if forloop.counter|divisibleby:2 %}{% static 'images/category/c2.jpg' %}{% else %}{% static 'images/category/c1.jpg' %}{% endif %}">
+
                             </div>
                         </div>
                     {% endfor %}
@@ -77,11 +73,6 @@
                 <div class="single-deal">
                     <div class="overlay"></div>
                     <img alt="" class="img-fluid w-100" src="{% static 'images/category/c5.jpg' %}">
-                    <a class="img-pop-up" href="{% static 'images/category/c5.jpg' %}" target="_blank">
-                        <div class="deal-details">
-                            <h6 class="deal-title">{{ categories.4.category_name }}</h6>
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
