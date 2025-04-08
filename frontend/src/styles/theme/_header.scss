@@ -100,7 +100,6 @@
 						background: #fff;
 						@media (min-width: 992px) {
 							position: absolute;
-							top: 140%;
 							left: 0px;
 							min-width: 200px;
 							text-align: left;
@@ -162,6 +161,26 @@
 							}
 							.nav-item {
 								margin-top: 0px;
+							}
+						}
+					}
+					&.user-menu{
+						ul {
+							@media (max-width: 991px) {
+								position: relative;
+							}
+							li.nav-item {
+								margin-left:  0px;
+								&:first-child {
+									@media (max-width: 991px) {
+										display: block;
+									}
+								}
+								.nav-link {
+									@media (max-width: 991px) {
+										padding-left: 0;
+									}
+								}
 							}
 						}
 					}
