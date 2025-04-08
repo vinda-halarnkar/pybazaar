@@ -21,16 +21,25 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Shop</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right d-flex align-items-center ms-3">
+                    <ul class="nav navbar-nav navbar-right d-flex align-items-lg-center">
                         <li class="nav-item">
                             <a class="cart" href="{% url 'products' %}" style="position: relative;">
                                 <span class="ti-bag cart-badge" value="2"></span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="login" href="{% url 'login' %}">
-                                <span class="lnr lnr-user"></span>
+                        <li class="nav-item dropdown submenu user-menu position-relative">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                  <span class="lnr lnr-user"></span>
                             </a>
+                            <ul class="dropdown-menu start-50 translate-middle-x">
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                                {% endif %}
+                            </ul>
                         </li>
                     </ul>
                 </div>
