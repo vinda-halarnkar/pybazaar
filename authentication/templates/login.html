@@ -1,11 +1,46 @@
-<form method="post" name="login-form" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-{% if messages %}
-    {% for message in messages %}
-        <p class="error">{{ message }}</p>
-    {% endfor %}
-{% endif %}
-<a href="{% url 'register' %}">Don't have an account? Register</a>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block banner_title %}Login{% endblock %}
+
+{% block content %}
+
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="{% static 'images/login.jpg' %}" alt="">
+                    <div class="hover">
+                        <h4>New to our website?</h4>
+                        <p>Welcome to our online store — where style meets convenience! Explore the latest products, enjoy exclusive deals, and experience a smooth shopping journey from cart to checkout.</p>
+                        <a class="primary-btn" href="{% url 'register' %}">Create an Account</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner d-flex flex-column justify-content-center">
+                    <h3>Log in to enter</h3>
+                    <form method="post" name="login-form" action="{% url 'login' %}" id="contactForm" novalidate="novalidate" class="row login_form">
+                        {% csrf_token %}
+                        <div class="col-md-12 form-group">
+                            {{ form.email }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.password }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn">Login</button>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

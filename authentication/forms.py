@@ -57,5 +57,28 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label="Email", validators=[validators.EmailValidator])
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(
+        validators=[validators.EmailValidator],
+        widget=forms.EmailInput(
+            attrs={
+                "class": "form-control",
+                "id": "email",
+                "name": "email",
+                "placeholder": "Email",
+                "onfocus": "this.placeholder=''",
+                "onblur": "this.placeholder='Email'",
+            }
+        ),
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "id": "password",
+                "name": "password",
+                "placeholder": "Password",
+                "onfocus": "this.placeholder=''",
+                "onblur": "this.placeholder='Password'",
+            }
+        ),
+    )

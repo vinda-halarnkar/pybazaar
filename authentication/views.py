@@ -67,6 +67,7 @@ def login_view(request):
             messages.error(request, "There were errors in the form. Please correct them.")
     else:
         form = LoginForm()
+        print(form)
     return render(request, "login.html", {"form": form})
 
 
